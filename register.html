@@ -14,20 +14,23 @@
 <body>
     <img class="menuIcon" src="./img/fvi.png" onclick="redirect('index')">
     <div class="container text-center login" style="margin-top: 50px;">
-        <div class="input-group mb-3 login">
+        <div class="input-group login">
             <span class="input-group-text">Felhasználónév:</span>
             <input type="text" id="user" class="form-control" aria-label="user">
         </div>
 
-        <div class="input-group login">
+        <div class="input-group my-3 login">
             <span class="input-group-text">Jelszó:</span>
             <input type="password" id="pass" class="form-control" aria-label="pass">
-           
+        </div>
+        <div class="input-group login">
+            <span class="input-group-text">Jelszó újra:</span>
+            <input type="password" id="passAgain" class="form-control" aria-label="passAgain">
         </div>
 
-        <button onclick="login()" class="btn btn-primary login" style="margin-top: 20px;">Bejelentkezés</button>
+        <button onclick="reg()" class="btn btn-primary login" style="margin-top: 20px;">Regisztráció</button>
         <hr class="login">
-        <a onclick="redirect('register')"><button class="btn btn-outline-primary login">Regisztráció</button></a>    
+        <a onclick="redirect('login')"><button class="btn btn-outline-primary login">Vissza a bejelentkezéshez</button></a>    
     </div>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
         integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz"

@@ -8,11 +8,25 @@ function login() {
     }
     if(localStorage.getItem(`${$("user").value}`)) {
         if(localStorage.getItem(`${$("user").value}`) != $("pass").value) {
-            alert("Hibás jelszó!");
+            alert("Hibás felhasználónév vagy jelszó!");
         } else {
             sessionStorage.setItem("logged", `${$("user").value}`);
             redirect("index");
         }
+    } else {
+        alert("Hibás felhasználónév vagy jelszó!");
+    }
+}
+
+function reg() {
+    if(!$("user").value || !$("pass").value || !$("passAgain").value) {
+        return alert("Üres mező!");
+    }
+    if($("pass").value != $("passAgain").value){
+        return alert("A jelszó nem egyezik!");
+    }
+    if(localStorage.getItem(`${$("user").value}`)) {
+        alert("Ez a felhasználónév már foglalt!");
     } else {
         localStorage.setItem(`${$("user").value}`, `${$("pass").value}`);
         sessionStorage.setItem("logged", `${$("user").value}`);
@@ -29,7 +43,7 @@ function logout() {
 function load() {
     if(sessionStorage.getItem("logged") && location.href.includes("index")) {
         $("authbtn").remove();
-        $("auth").innerHTML += `<button class="btn btn-outline-warning"><a style="padding: 10px;" href="./editor.html">Szerkesztő</a></button>`;
+        $("auth").innerHTML += `<button class="btn btn-outline-warning" onclick="redirect('editor')">Szerkesztő</button>`;
         $("auth").innerHTML += `<button id="authbtn" class="btn btn-outline-danger" onclick="logout()">Kijelentkezés</button>`;
     
         var userCards = JSON.parse(localStorage.getItem(`${sessionStorage.getItem("logged")}_card`));
@@ -43,7 +57,7 @@ function load() {
 
         }
     } else {
-        location.href.includes("index") ? $("cardsPlace").innerHTML += `<h1 id="loginAlert" class="text-center" style="margin-top: 50px;"><a href="./login.html">Jelentkezz be!</a></h1>` : null;
+        location.href.includes("index") ? $("cardsPlace").innerHTML += `<h1 id="loginAlert" class="text-center" style="margin-top: 50px;"><a href="./login.html">Jegyzet létrehozásához jelentkezz be!</a></h1>` : null;
     }
 
     if(location.href.includes("editor")){
@@ -126,6 +140,10 @@ function activateButton(event) {
 
     if (event.key === "Enter" && location.href.includes("login")) {
         login();
+    }
+
+    if (event.key === "Enter" && location.href.includes("register")) {
+        reg();
     }
 
     if (event.key === "Enter" && location.href.includes("index")) {

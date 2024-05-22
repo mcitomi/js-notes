@@ -32,3 +32,14 @@ a {
 #loginAlert {
     opacity: 0.3;
 }
+
+.input-group-text{
+    width: 140px;
+}
+
+.menuIcon{
+    width: 40px;
+    margin-top: 13px;
+    margin-left: 12px;
+    cursor: pointer;
+}
